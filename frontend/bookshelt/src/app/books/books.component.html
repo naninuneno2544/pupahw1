@@ -1,4 +1,5 @@
 <h2>My Books</h2>
+
 <ul class="books">
   <li *ngFor="let book of books"
     [class.selected]="book === selectedBook"
@@ -7,7 +8,7 @@
   </li>
 </ul>
 
-<div *ngIf="selectedBook">
+<!--<div *ngIf="selectedBook">
 
 <h2>{{selectedBook.name | uppercase}} Details</h2>
 <div><span>id: </span>{{selectedBook.id}}</div>
@@ -30,4 +31,6 @@
   <label for="book-page">Page: </label>
   <input id="book-page" [(ngModel)]="selectedBook.page" placeholder="page">
 </div>
-</div>
+</div>-->
+
+<app-book-detail [book]="selectedBook"></app-book-detail>
