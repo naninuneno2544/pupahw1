@@ -1,12 +1,23 @@
 <h2>My Books</h2>
 
 <ul class="books">
-  <li *ngFor="let book of books"
-    [class.selected]="book === selectedBook"
-    (click)="onSelect(book)">   
-    <span class="badge">{{book.id}}</span> {{book.name}}
+  <li *ngFor="let book of books">
+    <a routerLink="/detail/{{book.id}}">
+        <span class="badge">{{book.id}}</span> 
+  {{book.name}}
+    </a>
   </li>
 </ul>
+
+<div>
+  <label for="new-book">Book name: </label>
+  <input id="new-book" #bookName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(bookName.value); bookName.value=''">
+    Add book
+  </button>
+</div>
 
 <!--<div *ngIf="selectedBook">
 
@@ -32,5 +43,3 @@
   <input id="book-page" [(ngModel)]="selectedBook.page" placeholder="page">
 </div>
 </div>-->
-
-<app-book-detail [book]="selectedBook"></app-book-detail>

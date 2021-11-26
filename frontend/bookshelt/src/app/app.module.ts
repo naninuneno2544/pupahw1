@@ -7,19 +7,29 @@ import { BooksComponent } from './books/books.component';
 import { FormsModule } from '@angular/forms';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
     BookDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    FormsModule
+    HttpClientModule,
+
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
 
   providers: [],
