@@ -69,4 +69,25 @@ export class BookService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  deleteBook(id: number): Observable<Book> {
+    const url = `${this.booksUrl}/${id}`;
+  
+    return this.http.delete<Book>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted book id=${id}`)),
+      catchError(this.handleError<Book>('deleteBook'))
+    );
+  }
+
+  searchBooks(term: string): Observable<Book[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Book[]>(`${this.booksUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found books matching "${term}"`) :
+         this.log(`no books matching "${term}"`)),
+      catchError(this.handleError<Book[]>('searchBooks', []))
+    );
+  }
+
 }

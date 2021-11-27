@@ -29,6 +29,12 @@ export class BooksComponent implements OnInit {
         this.books.push(book);
       });
   }
+
+  delete(book: Book): void {
+    this.books = this.books.filter(h => h !== book);
+    this.bookService.deleteBook(book.id).subscribe();
+  }
+
 }
 /*export class BooksComponent implements OnInit {
   books: Book[] = [];
