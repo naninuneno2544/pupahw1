@@ -28,10 +28,6 @@ import { BookSearchComponent } from './book-search/book-search.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
   ],
 
   providers: [],

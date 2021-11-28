@@ -24,9 +24,9 @@ export class BookService {
   }
 
   getBook(id: number): Observable<Book> {
-    const url = `${this.booksUrl}/${id}`;
+    const url = `${this.booksUrl}${id}/`;
     return this.http.get<Book>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(_ => this.log(`fetched book id=${id}`)),
       catchError(this.handleError<Book>(`getBook id=${id}`))
     );
   }
@@ -35,7 +35,7 @@ export class BookService {
     this.messageService.add(`BookService: ${message}`);
   }
 
-  private booksUrl = 'api/books';
+  private booksUrl = 'http://localhost:8000/books/';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -52,6 +52,7 @@ export class BookService {
   }
 
   updateBook(book: Book): Observable<any> {
+    const url = `${this.booksUrl}${book.id}/`;
     return this.http.put(this.booksUrl, book, this.httpOptions).pipe(
       tap(_ => this.log(`updated book id=${book.id}`)),
       catchError(this.handleError<any>('updateBook'))
@@ -70,8 +71,7 @@ export class BookService {
   };
 
   deleteBook(id: number): Observable<Book> {
-    const url = `${this.booksUrl}/${id}`;
-  
+    const url = `${this.booksUrl}${id}/`;
     return this.http.delete<Book>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted book id=${id}`)),
       catchError(this.handleError<Book>('deleteBook'))
@@ -82,7 +82,7 @@ export class BookService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<Book[]>(`${this.booksUrl}/?name=${term}`).pipe(
+    return this.http.get<Book[]>(`${this.booksUrl}search/?_name=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found books matching "${term}"`) :
          this.log(`no books matching "${term}"`)),
