@@ -18,7 +18,6 @@ export class BookService {
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl)
     .pipe(
-      tap(_ => this.log('fetched books')),
       catchError(this.handleError<Book[]>('getBooks', []))
     );
   }
@@ -53,7 +52,7 @@ export class BookService {
 
   updateBook(book: Book): Observable<any> {
     const url = `${this.booksUrl}${book.id}/`;
-    return this.http.put(this.booksUrl, book, this.httpOptions).pipe(
+    return this.http.put(url, book, this.httpOptions).pipe(
       tap(_ => this.log(`updated book id=${book.id}`)),
       catchError(this.handleError<any>('updateBook'))
     );
@@ -61,8 +60,8 @@ export class BookService {
 
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.booksUrl, book, this.httpOptions).pipe(
-        tap((newBook: Book) => this.log(`added book w/ id=${newBook.id}`)),
-    catchError(this.handleError<Book>('addBook'))
+      tap((newBook: Book) => this.log(`added book w/ id=${newBook.id}`)),
+      catchError(this.handleError<Book>('addBook'))
     );
   }
 

@@ -13,14 +13,13 @@ import { BookService } from '../book.service';
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
+  book: Book | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
     private location: Location
   ) {}
-
-  @Input() book?: Book;
 
   ngOnInit(): void {
     this.getBook();
