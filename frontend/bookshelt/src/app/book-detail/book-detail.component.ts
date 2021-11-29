@@ -13,7 +13,8 @@ import { BookService } from '../book.service';
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
-  book: Book | undefined;
+  
+  @Input() book?: Book;
 
   constructor(
     private route: ActivatedRoute,

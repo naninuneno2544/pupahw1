@@ -1,9 +1,10 @@
 from django.db.models import Q
 from snippets.serializers import BookSerializer
 from snippets.models import Book
-from rest_framework import response, viewsets
+from rest_framework import viewsets
 from django.http.response import Http404
 from rest_framework.decorators import action
+from rest_framework.response import Response
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -22,4 +23,5 @@ class BookViewSet(viewsets.ModelViewSet):
         else:
             dataSet = self.queryset.all()
         books = self.serializer_class(dataSet, many=True)
-        return response(books.data)
+        return Response(books.data)
+
