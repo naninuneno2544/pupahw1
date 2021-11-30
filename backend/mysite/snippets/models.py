@@ -17,6 +17,7 @@ class Book(models.Model):
     price = models.CharField(max_length=100, default='')
     author = models.CharField(max_length=100, default='')
     page = models.CharField(max_length=100, default='')
+    immage = models.CharField(max_length=1000, default='')
 
     def __str__(self):
         return self.name

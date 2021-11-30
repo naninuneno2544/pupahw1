@@ -1,13 +1,15 @@
-<h2>My Books</h2>
+<h2>Books List</h2>
 
 <ul class="books">
   <li *ngFor="let book of books">
+    <img src="{{book.immage}}" style="width:150px;height:200px;">
     <a routerLink="/detail/{{book.id}}">
         <span class="badge">{{book.id}}</span> 
   {{book.name}}
     </a>
     <button class="delete" title="delete book"
   (click)="delete(book)">x</button>
+  <br>
   </li>
 </ul>
 

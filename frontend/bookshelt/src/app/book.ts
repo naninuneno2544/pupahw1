@@ -1,7 +1,8 @@
 export interface Book {
     id: number;
     name: string;
-    price: number;
+    price: string;
     author: string;
-    page: number;
+    page: string;
+    immage: string;
   }

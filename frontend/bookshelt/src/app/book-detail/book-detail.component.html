@@ -22,6 +22,12 @@
   <input id="book-page" [(ngModel)]="book.page" placeholder="page">
 </div>
 
+<div>
+  <label for="book-immage">Immage Url: </label>
+  <input id="book-immage" [(ngModel)]="book.immage" placeholder="immage">
+</div>
+<img src="{{book.immage}}" style="width:150px;height:200px;">
+
 </div>
 
 <button (click)="save()">save</button>
