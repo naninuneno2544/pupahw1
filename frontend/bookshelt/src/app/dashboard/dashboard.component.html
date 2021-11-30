@@ -3,6 +3,8 @@
   <a *ngFor="let book of books"
     routerLink="/detail/{{book.id}}">
     {{book.name}}
+    <img src="{{book.immage}}" style="width:150px;height:200px;">
+    {{book.price}} Bath
   </a>
 </div>
 
