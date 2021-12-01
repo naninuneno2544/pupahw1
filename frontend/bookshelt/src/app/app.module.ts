@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { BookSearchComponent } from './book-search/book-search.component';
+import {ButtonModule} from 'primeng/button';
+import {AccordionModule} from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { BookSearchComponent } from './book-search/book-search.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ButtonModule,
+    AccordionModule,
   ],
 
   providers: [],

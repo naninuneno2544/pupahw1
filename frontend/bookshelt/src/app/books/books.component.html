@@ -8,7 +8,7 @@
   {{book.name}}
     </a>
     <button class="delete" title="delete book"
-  (click)="delete(book)">x</button>
+  (click)="delete(book)">Delete Book</button>
   <br>
   </li>
 </ul>
@@ -18,9 +18,7 @@
   <input id="new-book" #bookName />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(bookName.value); bookName.value=''">
-    Add book
-  </button>
+  <button type="button" pButton label="Add book" (click)="add(bookName.value); bookName.value=''"></button>
 </div>
 
 <!--<div *ngIf="selectedBook">
