@@ -10,11 +10,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { BookSearchComponent } from './book-search/book-search.component';
 import {ButtonModule} from 'primeng/button';
 import {AccordionModule} from 'primeng/accordion';
+import {FocusTrapModule} from 'primeng/focustrap';
+import {KeyFilterModule} from 'primeng/keyfilter';
+import {ChipsModule} from 'primeng/chips';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import {AccordionModule} from 'primeng/accordion';
     BookDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    BookSearchComponent
+    BookSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,9 @@ import {AccordionModule} from 'primeng/accordion';
     HttpClientModule,
     ButtonModule,
     AccordionModule,
+    FocusTrapModule,
+    KeyFilterModule,
+    ChipsModule,
   ],
 
   providers: [],
