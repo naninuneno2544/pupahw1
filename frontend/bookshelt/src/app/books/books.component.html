@@ -1,5 +1,14 @@
 <h2>Books List</h2>
 
+<div>
+  <label for="new-book">Add Book name: </label>
+  <input id="new-book" #bookName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" pButton label="Add book" (click)="add(bookName.value); bookName.value=''"></button>
+</div>
+<br>
+
 <ul class="books">
   <li *ngFor="let book of books">
     <img src="{{book.immage}}" style="width:150px;height:200px;">
@@ -12,14 +21,6 @@
   <br>
   </li>
 </ul>
-
-<div>
-  <label for="new-book">Book name: </label>
-  <input id="new-book" #bookName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" pButton label="Add book" (click)="add(bookName.value); bookName.value=''"></button>
-</div>
 
 <!--<div *ngIf="selectedBook">
 
